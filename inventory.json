@@ -1,0 +1,11 @@
+[
+    {
+        "name": "Dairy milk",
+        "barcode": "123",
+        "quantity": 10,
+        "price": 2.5,
+        "description": "Fresh milk",
+        "category": "Food",
+        "id": 1
+    }
+]
