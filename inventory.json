@@ -3,9 +3,45 @@
         "name": "Dairy milk",
         "barcode": "123",
         "quantity": 10,
-        "price": 2.5,
+        "price": 3.0,
         "description": "Fresh milk",
         "category": "Food",
         "id": 1
+    },
+    {
+        "name": "Bread",
+        "barcode": "1002",
+        "quantity": 15,
+        "price": 1.5,
+        "description": "",
+        "category": "Bakery",
+        "id": 2
+    },
+    {
+        "name": "Rice",
+        "barcode": "1004",
+        "quantity": 50,
+        "price": 10.0,
+        "description": "",
+        "category": "Grains",
+        "id": 3
+    },
+    {
+        "name": "Sugar",
+        "barcode": "1005",
+        "quantity": 25,
+        "price": 4.0,
+        "description": "",
+        "category": "Groceries",
+        "id": 4
+    },
+    {
+        "name": "Tea",
+        "barcode": "1008",
+        "quantity": 18,
+        "price": 5.0,
+        "description": "",
+        "category": "Beverages",
+        "id": 5
     }
 ]
