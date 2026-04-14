@@ -1,33 +1,66 @@
-import unittest
-from app import app, inventory
+import json
+import pytest
+from app import app
 
-class TestInventoryAPI(unittest.TestCase):
-    def setUp(self):
-        self.client = app.test_client()
-        inventory.clear()  # Reset inventory
 
-    def test_add_item(self):
-        res = self.client.post("/inventory", json={"name": "Test", "barcode": "123"})
-        self.assertEqual(res.status_code, 201)
-        self.assertEqual(len(inventory), 1)
+# --------------------------
+# Fixture
+# --------------------------
+@pytest.fixture
+def client():
+    app.config["TESTING"] = True
 
-    def test_get_inventory(self):
-        self.client.post("/inventory", json={"name": "Test", "barcode": "123"})
-        res = self.client.get("/inventory")
-        self.assertEqual(res.status_code, 200)
-        self.assertEqual(len(res.json), 1)
+    # reset JSON file before each test
+    with open("inventory.json", "w") as f:
+        json.dump([], f)
 
-    def test_update_item(self):
-        self.client.post("/inventory", json={"name": "Test", "barcode": "123"})
-        res = self.client.patch("/inventory/1", json={"name": "Updated"})
-        self.assertEqual(res.status_code, 200)
-        self.assertEqual(res.json["name"], "Updated")
+    with app.test_client() as client:
+        yield client
 
-    def test_delete_item(self):
-        self.client.post("/inventory", json={"name": "Test", "barcode": "123"})
-        res = self.client.delete("/inventory/1")
-        self.assertEqual(res.status_code, 200)
-        self.assertEqual(len(inventory), 0)
 
-if __name__ == "__main__":
-    unittest.main()
+# --------------------------
+# Tests
+# --------------------------
+
+def test_add_item(client):
+    res = client.post("/inventory", json={
+        "name": "Test",
+        "barcode": "123"
+    })
+
+    assert res.status_code == 201
+    data = res.get_json()
+    assert data["name"] == "Test"
+
+
+def test_get_inventory(client):
+    client.post("/inventory", json={"name": "Test", "barcode": "123"})
+
+    res = client.get("/inventory")
+
+    assert res.status_code == 200
+    assert len(res.get_json()) == 1
+
+
+def test_update_item(client):
+    client.post("/inventory", json={"name": "Test", "barcode": "123"})
+
+    res = client.patch("/inventory/1", json={"name": "Updated"})
+
+    assert res.status_code == 200
+    assert res.get_json()["name"] == "Updated"
+
+
+def test_delete_item(client):
+    client.post("/inventory", json={"name": "Test", "barcode": "123"})
+
+    res = client.delete("/inventory/1")
+    assert res.status_code == 200
+
+    res2 = client.get("/inventory")
+    assert len(res2.get_json()) == 0
+
+
+def test_get_not_found(client):
+    res = client.get("/inventory/999")
+    assert res.status_code == 404
