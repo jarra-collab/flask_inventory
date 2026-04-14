@@ -1,1 +1,56 @@
-[]
+[
+    {
+        "name": "Milk",
+        "barcode": "1001",
+        "quantity": 20,
+        "price": 2.5,
+        "description": "Fresh full cream milk",
+        "category": "dairy",
+        "id": 1
+    },
+    {
+        "name": "Bread",
+        "barcode": "1002",
+        "quantity": 15,
+        "price": 1.2,
+        "description": "Brown bread loaf",
+        "category": "bakery",
+        "id": 2
+    },
+    {
+        "name": "Rice",
+        "barcode": "1003",
+        "quantity": 30,
+        "price": 3.0,
+        "description": "Basmati rice 1kg",
+        "category": "grains",
+        "id": 3
+    },
+    {
+        "name": "Sugar",
+        "barcode": "1004",
+        "quantity": 25,
+        "price": 1.8,
+        "description": "White sugar",
+        "category": "grocery",
+        "id": 4
+    },
+    {
+        "name": "Cooking Oil",
+        "barcode": "1005",
+        "quantity": 10,
+        "price": 5.5,
+        "description": "Vegetable cooking oil",
+        "category": "oil",
+        "id": 5
+    },
+    {
+        "name": "Salt",
+        "barcode": "1010",
+        "quantity": 35,
+        "price": 0.5,
+        "description": "Iodized salt",
+        "category": "grocery",
+        "id": 6
+    }
+]
