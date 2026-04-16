@@ -1,11 +1,11 @@
-# 📦 Flask Inventory Management System
+#  Flask Inventory Management System
 
 A simple Inventory Management System built with **Flask (REST API)**, a **Python CLI client**, and **unit tests using pytest**.  
 It also integrates with the **OpenFoodFacts API** to fetch product details using barcodes.
 
 ---
 
-## 🚀 Features
+##  Features
 
 ### 🔹 REST API (Flask)
 - Create inventory items
@@ -35,7 +35,7 @@ It also integrates with the **OpenFoodFacts API** to fetch product details using
 
 ---
 
-## 🏗️ Project Structure
+##  Project Structure
 flask_inventory/
 │
 ├── app.py # Flask REST API
